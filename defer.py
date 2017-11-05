@@ -53,7 +53,7 @@ class DefersContainer(object):
         return __suppress__
 
 
-def defers_collector(func):
+def with_defer(func):
     @wraps(func)
     def __wrap__(*args, **kwargs):
         __defers__ = DefersContainer()
@@ -62,7 +62,7 @@ def defers_collector(func):
     return __wrap__
 
 
-@defers_collector
+@with_defer
 def func():
     f = open('file.txt', 'w')
     defer(lambda: f.close())
