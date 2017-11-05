@@ -7,7 +7,7 @@ Thank you ограммирование.
 
 # Go-style error handling
 
-<code>
+```Python
 import inspect
 import sys
 
@@ -80,4 +80,4 @@ def func():
 
 func()
 print("Recovered!")
-</code>
+```
