@@ -10,6 +10,7 @@ Thank you ограммирование.
 ```Python
 import inspect
 import sys
+from functools import wraps
 
 def panic(x):
     raise Exception(x)
@@ -53,10 +54,11 @@ class DefersContainer(object):
 
 
 def defers_collector(func):
+    @wraps(func)
     def __wrap__(*args, **kwargs):
         __defers__ = DefersContainer()
         with __defers__:
-            func(*args, **kwargs)
+            return func(*args, **kwargs)
     return __wrap__
 
 
